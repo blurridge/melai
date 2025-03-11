@@ -11,11 +11,15 @@ import sys
 import platform
 from datetime import datetime
 from typing import List, Dict, Any, Optional
+from dotenv import load_dotenv
 
 from app.models import dataset as dataset_models
 from app.models import notebook as notebook_models
 from app.models.training import TrainingRequest
 from app.services import data_service, model_service, notebook_service
+
+# Load environment variables
+load_dotenv()
 
 # Create the FastAPI app
 app = FastAPI(
@@ -25,18 +29,22 @@ app = FastAPI(
 )
 
 # Configure CORS to allow frontend requests
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
+# Get storage path from environment
+storage_path = os.getenv("STORAGE_PATH", "./storage")
+
 # Create storage directories if they don't exist
-os.makedirs("./storage/datasets", exist_ok=True)
-os.makedirs("./storage/models", exist_ok=True)
-os.makedirs("./storage/notebooks", exist_ok=True)
+os.makedirs(f"{storage_path}/datasets", exist_ok=True)
+os.makedirs(f"{storage_path}/models", exist_ok=True)
+os.makedirs(f"{storage_path}/notebooks", exist_ok=True)
 
 
 @app.get("/")
@@ -53,23 +61,24 @@ def health_check():
     """
     # Check storage directories
     storage_status = {
-        "datasets": os.path.exists("./storage/datasets"),
-        "models": os.path.exists("./storage/models"),
-        "notebooks": os.path.exists("./storage/notebooks")
+        "datasets": os.path.exists(f"{storage_path}/datasets"),
+        "models": os.path.exists(f"{storage_path}/models"),
+        "notebooks": os.path.exists(f"{storage_path}/notebooks")
     }
     
     # Count existing resources
     resource_counts = {
-        "datasets": len(os.listdir("./storage/datasets")) if os.path.exists("./storage/datasets") else 0,
-        "models": len(os.listdir("./storage/models")) if os.path.exists("./storage/models") else 0,
-        "notebooks": len(os.listdir("./storage/notebooks")) if os.path.exists("./storage/notebooks") else 0
+        "datasets": len(os.listdir(f"{storage_path}/datasets")) if os.path.exists(f"{storage_path}/datasets") else 0,
+        "models": len(os.listdir(f"{storage_path}/models")) if os.path.exists(f"{storage_path}/models") else 0,
+        "notebooks": len(os.listdir(f"{storage_path}/notebooks")) if os.path.exists(f"{storage_path}/notebooks") else 0
     }
     
     # Get system info
     system_info = {
         "python_version": sys.version,
         "platform": platform.platform(),
-        "timestamp": datetime.now().isoformat()
+        "timestamp": datetime.now().isoformat(),
+        "debug_mode": os.getenv("DEBUG", "False").lower() == "true"
     }
     
     # Return comprehensive health status
@@ -79,7 +88,8 @@ def health_check():
         "api_version": app.version,
         "storage_status": storage_status,
         "resource_counts": resource_counts,
-        "system_info": system_info
+        "system_info": system_info,
+        "environment": os.getenv("ENV", "development")
     }
 
 
@@ -123,7 +133,7 @@ async def get_notebook(notebook_id: str):
     Get a Jupyter notebook file by ID.
     """
     try:
-        notebook_path = f"./storage/notebooks/{notebook_id}.ipynb"
+        notebook_path = f"{storage_path}/notebooks/{notebook_id}.ipynb"
         if not os.path.exists(notebook_path):
             raise HTTPException(status_code=404, detail="Notebook not found")
         return FileResponse(
