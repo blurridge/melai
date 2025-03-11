@@ -2,7 +2,7 @@
  * Application Configuration
  * 
  * This file centralizes access to environment variables and configuration
- * settings for the ML-AI Platform frontend. All environment variables
+ * settings for the MeLAI Platform frontend. All environment variables
  * should be accessed through this file to ensure consistent defaults and usage.
  */
 
@@ -10,7 +10,7 @@
 export const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 // Application Information
-export const APP_TITLE = import.meta.env.VITE_APP_TITLE || 'ML-AI Platform';
+export const APP_TITLE = import.meta.env.VITE_APP_TITLE || 'MeLAI Platform';
 export const APP_VERSION = import.meta.env.VITE_APP_VERSION || '1.0.0';
 
 // Feature Flags

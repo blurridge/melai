@@ -1,1 +1,1 @@
-# ML App Backend Package 
+# MeLAI Backend Package 

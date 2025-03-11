@@ -60,7 +60,7 @@ backend/htmlcov/
 /storage/
 /data/
 
-# ML-AI Platform specific directories
+# MeLAI Platform specific directories
 backend/storage/datasets/
 backend/storage/notebooks/
 backend/storage/models/

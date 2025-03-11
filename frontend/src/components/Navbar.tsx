@@ -17,16 +17,24 @@ const Navbar = () => {
           <div className="flex">
             <div className="flex-shrink-0 flex items-center">
               <Link to="/" className="flex items-center">
-                <svg 
-                  className="w-8 h-8 text-primary" 
-                  fill="currentColor" 
-                  viewBox="0 0 20 20" 
+                <svg
+                  className="h-8 w-8 text-primary"
+                  fill="none"
+                  height="24"
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  viewBox="0 0 24 24"
+                  width="24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
-                  <path d="M13 7H7v6h6V7z" />
-                  <path fillRule="evenodd" d="M7 2a1 1 0 012 0v1h2V2a1 1 0 112 0v1h2a2 2 0 012 2v2h1a1 1 0 110 2h-1v2h1a1 1 0 110 2h-1v2a2 2 0 01-2 2h-2v1a1 1 0 11-2 0v-1H9v1a1 1 0 11-2 0v-1H5a2 2 0 01-2-2v-2H2a1 1 0 110-2h1V9H2a1 1 0 010-2h1V5a2 2 0 012-2h2V2zM5 5h10v10H5V5z" clipRule="evenodd" />
+                  <path d="M12 2H2v10h10V2Z" />
+                  <path d="M12 2h10v10H12V2Z" />
+                  <path d="M12 12H2v10h10V12Z" />
+                  <path d="M12 12h10v10H12V12Z" />
                 </svg>
-                <span className="ml-2 text-xl font-bold text-primary">ML-AI</span>
+                <span className="ml-2 text-xl font-bold text-primary">MeLAI</span>
               </Link>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:space-x-8">

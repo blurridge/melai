@@ -23,7 +23,7 @@ load_dotenv()
 
 # Create the FastAPI app
 app = FastAPI(
-    title="ML App Backend",
+    title="MeLAI Backend",
     description="API for a no-code ML model building application",
     version="1.0.0"
 )
@@ -50,7 +50,7 @@ os.makedirs(f"{storage_path}/notebooks", exist_ok=True)
 @app.get("/")
 def read_root():
     """Basic root endpoint."""
-    return {"status": "ok", "message": "ML App Backend is running"}
+    return {"status": "ok", "message": "MeLAI Backend is running"}
 
 
 @app.get("/health")
@@ -84,7 +84,7 @@ def health_check():
     # Return comprehensive health status
     return {
         "status": "ok",
-        "message": "ML App Backend is operational",
+        "message": "MeLAI Backend is operational",
         "api_version": app.version,
         "storage_status": storage_status,
         "resource_counts": resource_counts,

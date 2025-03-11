@@ -6,7 +6,7 @@ import { ThemeProvider } from './components/ThemeProvider.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <ThemeProvider defaultTheme="system" storageKey="ml-ai-theme">
+    <ThemeProvider defaultTheme="system" storageKey="melai-theme">
       <App />
     </ThemeProvider>
   </React.StrictMode>,

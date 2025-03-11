@@ -1,4 +1,4 @@
-# ML-AI: No-Code Machine Learning Web Application
+# MeLAI: No-Code Machine Learning Web Application
 
 A web application that empowers users with no coding experience to build machine learning models using tabulated data and generate Jupyter notebooks containing the code.
 
