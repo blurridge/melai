@@ -51,6 +51,12 @@ backend/htmlcov/
 /storage/
 /data/
 
+# ML-AI Platform specific directories
+backend/storage/datasets/
+backend/storage/notebooks/
+backend/storage/models/
+*.ipynb
+
 # Jupyter Notebook
 .ipynb_checkpoints
 

@@ -1,1 +1,0 @@
-{"id":"c134235d-fae8-47fb-9a69-df0792555d7b","filename":"Titanic-Dataset.csv","file_type":"csv","upload_timestamp":"2025-03-11T09:01:41.070898","num_rows":891,"num_columns":12,"column_names":["PassengerId","Survived","Pclass","Name","Sex","Age","SibSp","Parch","Ticket","Fare","Cabin","Embarked"]}
