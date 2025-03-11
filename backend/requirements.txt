@@ -1,0 +1,17 @@
+fastapi
+uvicorn
+python-multipart
+pandas
+scikit-learn
+matplotlib
+seaborn
+plotly
+shap
+nbformat
+nbconvert
+openpyxl
+pydantic
+python-dotenv
+gunicorn
+pytest
+httpx 

@@ -1,0 +1,1 @@
+{"status": "failed", "error": "Error in model training process: Error in notebook generation: cannot access local variable 'feature_name' where it is not associated with a value", "timestamp": "2025-03-11T09:06:25.047975"}
